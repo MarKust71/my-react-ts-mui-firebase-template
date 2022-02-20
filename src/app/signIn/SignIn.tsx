@@ -1,9 +1,11 @@
-import React from 'react';
-import { Avatar, Box, Button, Container, Grid, Link, TextField, Typography, useTheme } from '@mui/material';
+import React, { useReducer } from 'react';
+import { Avatar, Box, Button, Container, Grid, TextField, Typography, useTheme } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 import { firebaseAuth } from 'api/firebase.config';
+import { authReducer, userInitialState } from 'reducers/authReducer';
 
 import { SignInProps } from './SignIn.types';
 import { useStyles } from './SignIn.styles';
@@ -11,6 +13,7 @@ import { useStyles } from './SignIn.styles';
 export const SignIn: React.FC<SignInProps> = ({}) => {
   const theme = useTheme();
   const classes = useStyles(theme);
+  const [state] = useReducer(authReducer, userInitialState);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -38,9 +41,11 @@ export const SignIn: React.FC<SignInProps> = ({}) => {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <Link to="/">
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+        </Link>
 
         <Typography component="h1" variant="h5">
           Sign in
@@ -68,13 +73,13 @@ export const SignIn: React.FC<SignInProps> = ({}) => {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="#" variant="body2">
-                Forgot password?
+              <Link to="#">
+                <Typography variant="body2">Forgot password?</Typography>
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link to="/sign-up">
+                <Typography variant="body2">{"Don't have an account? Sign up"}</Typography>
               </Link>
             </Grid>
           </Grid>{' '}

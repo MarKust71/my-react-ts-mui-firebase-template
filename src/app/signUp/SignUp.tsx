@@ -1,7 +1,8 @@
 import React from 'react';
-import { Avatar, Box, Button, Container, Grid, Link, TextField, Typography, useTheme } from '@mui/material';
+import { Avatar, Box, Button, Container, Grid, TextField, Typography, useTheme } from '@mui/material';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { Link } from 'react-router-dom';
 
 import { firebaseAuth } from 'api/firebase.config';
 
@@ -38,9 +39,11 @@ export const SignUp: React.FC<SignUpProps> = ({}) => {
           alignItems: 'center',
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <Link to="/">
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+        </Link>
 
         <Typography component="h1" variant="h5">
           Sign up
@@ -79,8 +82,8 @@ export const SignUp: React.FC<SignUpProps> = ({}) => {
           </Button>
           <Grid container justifyContent="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
+              <Link to="/sign-in">
+                <Typography variant="body2">Already have an account? Sign in</Typography>
               </Link>
             </Grid>
           </Grid>

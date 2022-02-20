@@ -8,5 +8,5 @@ export const Main: React.FC<MainProps> = ({}) => {
   const theme = useTheme();
   const classes = useStyles(theme);
 
-  return <Typography className={classes.wrapper}>My React Typescript Material-UI Boilerplate</Typography>;
+  return <Typography className={classes.wrapper}>My React Typescript Material-UI Firebase Template</Typography>;
 };

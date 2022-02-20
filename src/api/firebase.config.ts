@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -12,4 +13,14 @@ const firebaseConfig = {
 };
 
 export const firebaseApp = initializeApp(firebaseConfig);
+export const firebaseAuth = getAuth(firebaseApp);
 const analytics = getAnalytics(firebaseApp);
+
+onAuthStateChanged(firebaseAuth, (user) => {
+  if (user) {
+    console.log({ uid: user.uid });
+    setTimeout(() => signOut(firebaseAuth), 5000);
+  } else {
+    console.log('nobody logged in');
+  }
+});

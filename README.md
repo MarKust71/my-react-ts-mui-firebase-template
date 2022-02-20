@@ -1,1 +1,1 @@
-# my-react-ts-mui-template
+# my-react-ts-mui-firebase-template

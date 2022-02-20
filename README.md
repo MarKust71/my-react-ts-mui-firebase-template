@@ -2,7 +2,7 @@
 
 1. Clone the repository: `git clone <repository-link.git>`
 2. Run `yarn`
-3. In the main project folder create `.env` file and fill it up with the values read in your Forebase App config:
+3. In the main project folder create `.env` file and fill it up with the values read in your Firebase App config:
 
 
     .env:  
